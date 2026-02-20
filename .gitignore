@@ -1,0 +1,12 @@
+# Sanal ortam
+venv/
+# Gizli bilgiler
+.env
+# Model dosyaları 
+model/
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+# VS Code
+.vscode/

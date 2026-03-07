@@ -33,12 +33,12 @@ async def close_mongo():
 
 def get_users_collection():
     """Kullanıcılar koleksiyonu"""
-    return db["users"]
+    return db["users"] #type: ignore
 
 def get_conversations_collection():
     """Sohbet geçmişleri koleksiyonu"""
-    return db["conversations"]
+    return db["conversations"] #type: ignore
 
 def get_connections_collection():
     """Kullanıcıların kaydettiği DB bağlantıları"""
-    return db["db_connections"]
+    return db["db_connections"] #type: ignore

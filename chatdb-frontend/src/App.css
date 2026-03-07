@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+/* Dashboard.module.css veya ilgili stil dosyası */
+
+.userArea {
+    position: relative; /* Menünün buraya göre konumlanması için */
+    cursor: pointer;
+}
+
+.dropdownMenu {
+    position: absolute;
+    bottom: 100%; /* İsmin üstünde açılması için (Görselde alt köşede olduğu için) */
+    left: 0;
+    width: 150px;
+    background-color: #1e1e2f; /* Tasarımına uygun koyu bir renk */
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+

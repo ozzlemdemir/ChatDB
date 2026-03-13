@@ -204,7 +204,7 @@ export default function Dashboard() {
     
             {isMenuOpen && (
         <div style={s.dropdownMenu}>
-            <div style={s.dropdownItem} onClick={() => console.log("Profil tıklandı")}>Profil</div>
+            <div style={s.dropdownItem} onClick={() => navigate('/profile')}>Profil</div>
             <div style={s.dropdownItem} onClick={() => console.log("Ayarlar tıklandı")}>Ayarlar</div>
             <hr style={s.divider} />
             <button onClick={handleLogout} style={s.logoutBtnInline}>Çıkış Yap</button>

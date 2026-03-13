@@ -8,6 +8,7 @@ from bson import ObjectId
 import os
 from dotenv import load_dotenv
 from mongo import get_users_collection
+from typing import Optional
 
 load_dotenv()
 
@@ -31,6 +32,12 @@ class RegisterRequest(BaseModel):
     username: str
     email: str
     password: str
+
+class UpdateProfileRequest(BaseModel):
+    """Profil güncelleme isteği için gerekli alanlar"""
+    username: str
+    email: str
+    password: Optional[str] = None
 
 class LoginRequest(BaseModel):
     """Giriş isteği için gerekli alanlar"""
@@ -172,4 +179,41 @@ async def get_me(current_user = Depends(get_current_user)):
         "id": str(current_user["_id"]),
         "username": current_user["username"],
         "email": current_user["email"]
+    }
+
+@router.put("/me")
+async def update_me(request: UpdateProfileRequest, current_user = Depends(get_current_user)):
+    """
+    Giriş yapmış kullanıcının bilgilerini günceller.
+    Email değişiyorsa başka birinde var mı kontrol eder.
+    Şifre girilmişse günceller.
+    """
+    users = get_users_collection()
+    user_id = current_user["_id"]
+
+    # Email değiştiriliyorsa, başkası kullanıyor mu kontrol et
+    if request.email != current_user["email"]:
+        existing = await users.find_one({"email": request.email})
+        if existing:
+            raise HTTPException(status_code=400, detail="Bu email başka bir kullanıcı tarafından kullanılıyor")
+
+    update_data = {
+        "username": request.username,
+        "email": request.email
+    }
+
+    password_val = request.password
+    if password_val:
+        update_data["password"] = hash_password(password_val)
+
+    await users.update_one(
+        {"_id": user_id},
+        {"$set": update_data}
+    )
+
+    return {
+        "id": str(user_id),
+        "username": request.username,
+        "email": request.email,
+        "message": "Profil güncellendi"
     }

@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://127.0.0.1:8000';
+const BASE_URL = 'https://lyricism-finalize-unless.ngrok-free.dev';
 
 // Axios instance oluştur
 // Her istekte otomatik olarak token eklenecek
 const api = axios.create({
     baseURL: BASE_URL,
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
     }
 });
-
 // Her istekten önce token varsa header'a ekle
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');

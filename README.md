@@ -57,15 +57,15 @@ LLM Model (SQL üretimi)
 
 ### 🔹 Ana Sohbet Ekranı
 
-![Chat Screen](./assets/chat.png)
+![Chat Screen](C:\Users\Lenovo\Desktop\ChatDB\chatdb-frontend\photos\chat.png)
 
 ### 🔹 Veritabanı Bağlantı Paneli
 
-![DB Connection](./assets/db.png)
+![DB Connection](C:\Users\Lenovo\Desktop\ChatDB\chatdb-frontend\photos\Dashboard.png)
 
 ### 🔹 Profil Ayarları
 
-![Profile](./assets/profile.png)
+![Profile](C:\Users\Lenovo\Desktop\ChatDB\chatdb-frontend\photos\profile.png)
 
 ---
 

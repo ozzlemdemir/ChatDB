@@ -118,16 +118,16 @@ export default function Dashboard() {
             setConversationId(data.conversation_id);
             loadConversations(); // Geçmişi güncelle
         } catch (err) {
-    const errMsg = err.response?.data?.detail 
-        ? (typeof err.response.data.detail === 'string' 
-            ? err.response.data.detail 
-            : JSON.stringify(err.response.data.detail))
-        : 'Hata oluştu';
-    
-    setMessages(prev => [
-        ...prev.slice(0, -1),
-        { type: 'exchange', question: q, sql: null, result: { error: errMsg } }
-    ]);
+            const errMsg = err.response?.data?.detail
+                ? (typeof err.response.data.detail === 'string'
+                    ? err.response.data.detail
+                    : JSON.stringify(err.response.data.detail))
+                : 'Hata oluştu';
+
+            setMessages(prev => [
+                ...prev.slice(0, -1),
+                { type: 'exchange', question: q, sql: null, result: { error: errMsg } }
+            ]);
         } finally {
             setLoading(false);
         }
@@ -200,17 +200,17 @@ export default function Dashboard() {
 
                 {/* KULLANICI */}
                 <div style={s.userArea} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-         <div style={s.userName}>👤 {user.username}</div>
-    
-            {isMenuOpen && (
-        <div style={s.dropdownMenu}>
-            <div style={s.dropdownItem} onClick={() => navigate('/profile')}>Profil</div>
-            <div style={s.dropdownItem} onClick={() => console.log("Ayarlar tıklandı")}>Ayarlar</div>
-            <hr style={s.divider} />
-            <button onClick={handleLogout} style={s.logoutBtnInline}>Çıkış Yap</button>
-        </div>
-    )}
-</div>
+                    <div style={s.userName}>👤 {user.username}</div>
+
+                    {isMenuOpen && (
+                        <div style={s.dropdownMenu}>
+                            <div style={s.dropdownItem} onClick={() => navigate('/profile')}>Profil</div>
+                            <div style={s.dropdownItem} onClick={() => console.log("Ayarlar tıklandı")}>Ayarlar</div>
+                            <hr style={s.divider} />
+                            <button onClick={handleLogout} style={s.logoutBtnInline}>Çıkış Yap</button>
+                        </div>
+                    )}
+                </div>
             </div>
 
             {/* ANA ALAN */}
@@ -315,7 +315,7 @@ export default function Dashboard() {
 
 
 const s = {
-    
+
     root: { display: 'flex', height: '100vh', background: '#0a0a0f', fontFamily: 'sans-serif', overflow: 'hidden' },
     sidebar: { width: '280px', minWidth: '280px', background: '#111118', borderRight: '1px solid #2a2a3a', display: 'flex', flexDirection: 'column', overflow: 'hidden' },
     sidebarTop: { flex: 1, overflowY: 'auto', padding: '20px 16px' },
@@ -363,8 +363,8 @@ const s = {
     inputArea: { padding: '16px 32px', borderTop: '1px solid #2a2a3a', background: '#111118', display: 'flex', gap: '12px' },
     textarea: { flex: 1, background: '#1a1a24', border: '1px solid #2a2a3a', borderRadius: '10px', padding: '12px 16px', color: '#e2e8f0', fontSize: '14px', fontFamily: 'sans-serif', outline: 'none', resize: 'none' },
     sendBtn: { width: '48px', height: '48px', background: '#6366f1', border: 'none', borderRadius: '10px', color: 'white', fontSize: '18px', cursor: 'pointer' },
-    userArea: { padding: '16px', borderTop: '1px solid #2a2a3a', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
-    userName: { color: '#e2e8f0', fontSize: '13px' },
+
+
     dropdownMenu: { position: 'absolute', bottom: '60px', left: '16px', background: '#111118', border: '1px solid #2a2a3a', borderRadius: '8px', overflow: 'hidden', zIndex: 100 },
     dropdownItem: { padding: '10px 16px', color: '#e2e8f0', fontSize: '13px', cursor: 'pointer', whiteSpace: 'nowrap' },
     divider: { margin: '0', border: 'none', borderTop: '1px solid #2a2a3a' },
